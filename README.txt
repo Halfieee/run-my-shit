@@ -1,3 +1,8 @@
+Depends on:
+python3-tk
+terminus-font
+
+
 If you have multiple terminal emulators installed on your os and you want to change the terminal that's gonna be
 used by this script to your liking, edit terminal-override.txt with the package name of your terminal emulator.
 If not, the terminal will be selected automatically.
