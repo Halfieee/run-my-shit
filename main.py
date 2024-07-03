@@ -98,18 +98,18 @@ def newterminal():
     if get_output('echo "$(<terminal-override.txt )"') == 'xfce4-terminal':
         sys('xfce4-terminal --hold -e ./Executables/temp')
         override = True
-    elif get_output('echo "$(<terminal-override.txt )"') == 'konsole':
+    if get_output('echo "$(<terminal-override.txt )"') == 'konsole':
         sys('konsole --noclose -e ./Executables/temp')
         override = True
-    elif get_output('echo "$(<terminal-override.txt )"') == 'alacritty':
+    if get_output('echo "$(<terminal-override.txt )"') == 'alacritty':
         sys('alacritty --hold -e ./Executables/temp')
         override = True
-    elif get_output('echo "$(<terminal-override.txt )"') == 'kitty':
+    if get_output('echo "$(<terminal-override.txt )"') == 'kitty':
         sys('kitty --hold -e ./Executables/temp')
         override = True
-    elif get_output('echo "$(<terminal-override.txt )"') == 'st':
+    if get_output('echo "$(<terminal-override.txt )"') == 'st':
         sys("st -e bash -c './Executables/temp /NY; read'")
-    elif get_output('echo "$(<terminal-override.txt )"') == 'xterm':
+    if get_output('echo "$(<terminal-override.txt )"') == 'xterm':
         sys('xterm -hold -e ./Executables/temp')
         override = True
 
