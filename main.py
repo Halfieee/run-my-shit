@@ -94,30 +94,28 @@ def newterminal():
         xterm = True
     
     with open('terminal-override.txt') as f:
-        term = f.readlines()
+        term = f.read()
 
-    if term == "['xfce4-terminal\n']":
+    if term == "xfce4-terminal\n":
         override = True
         sys('xfce4-terminal --hold -e ./Executables/temp')
-    if term == "['konsole\n']":
+    if term == "konsole\n":
         override = True
         sys('konsole --noclose -e ./Executables/temp')
-    if term == "['alacritty\n']":
+    if term == "alacritty\n":
         override = True
         sys('alacritty --hold -e ./Executables/temp')
-    if term == "['kitty\n']":
+    if term == "kitty\n":
         override = True
         sys('kitty --hold -e ./Executables/temp')
-    if term == "['st\n']":
+    if term == "st\n":
         override = True
         sys("st -e bash -c './Executables/temp /NY; read'")
-    if term == "['xterm\n']":
+    if term == "xterm\n":
         override = True
         sys('xterm -hold -e ./Executables/temp')
         
-
-
-    
+        
     if xfce4terminal:
         if override == False:
             sys('xfce4-terminal --hold -e ./Executables/temp')
@@ -140,9 +138,3 @@ def newterminal():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
