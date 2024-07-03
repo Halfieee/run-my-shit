@@ -1,4 +1,4 @@
-import tkinter as tk
+=import tkinter as tk
 from tkinter import ttk
 from os import system as sys
 import os.path
@@ -93,24 +93,25 @@ def newterminal():
     if get_output(pkgmanager + "| grep xterm | awk '{print $" + awkline + "}' | head -n 1" ) == "xterm":
         xterm = True
     
+    with open('terminal-override.txt') as f:
+        term = f.readlines()
 
-
-    if get_output('echo "$(<terminal-override.txt )"') == 'xfce4-terminal':
+    if term == "['xfce4-terminal\n']":
         override = True
         sys('xfce4-terminal --hold -e ./Executables/temp')
-    if get_output('echo "$(<terminal-override.txt )"') == 'konsole':
+    if term == "['konsole\n']":
         override = True
         sys('konsole --noclose -e ./Executables/temp')
-    if get_output('echo "$(<terminal-override.txt )"') == 'alacritty':
+    if term == "['alacritty\n']":
         override = True
         sys('alacritty --hold -e ./Executables/temp')
-    if get_output('echo "$(<terminal-override.txt )"') == 'kitty':
+    if term == "['kitty\n']":
         override = True
         sys('kitty --hold -e ./Executables/temp')
-    if get_output('echo "$(<terminal-override.txt )"') == 'st':
+    if term == "['st\n']":
         override = True
         sys("st -e bash -c './Executables/temp /NY; read'")
-    if get_output('echo "$(<terminal-override.txt )"') == 'xterm':
+    if term == "['xterm\n']":
         override = True
         sys('xterm -hold -e ./Executables/temp')
         
@@ -120,25 +121,26 @@ def newterminal():
     if xfce4terminal:
         if override == False:
             sys('xfce4-terminal --hold -e ./Executables/temp')
-    if konsole:
+    elif konsole:
         if override == False:
             sys('konsole --noclose -e ./Executables/temp')
-    if alacritty:
+    elif alacritty:
         if override == False:
             sys('alacritty --hold -e ./Executables/temp')
-    if kitty:
+    elif kitty:
         if override == False:
             sys('kitty --hold -e ./Executables/temp')
-    if st:
+    elif st:
         if override == False:
             sys("st -e bash -c './Executables/temp /NY; read'")
-    if xterm:
+    elif xterm:
         if override == False:
             sys('xterm -hold -e ./Executables/temp')
 
 
 if __name__ == '__main__':
     main()
+
 
 
 
