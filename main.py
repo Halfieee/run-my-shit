@@ -76,7 +76,7 @@ def newterminal():
     #distro check
     if debian:
         pkgmanager = 'dpkg-query --list '
-        awkline = '2'
+        awkline = '2' 
     else:
         pass
 
@@ -115,18 +115,26 @@ def newterminal():
 
 
     
-    if xfce4terminal and override == False:
-        sys('xfce4-terminal --hold -e ./Executables/temp')
-    elif konsole and override == False:
-        sys('konsole --noclose -e ./Executables/temp')
-    elif alacritty and override == False:
-        sys('alacritty --hold -e ./Executables/temp')
-    elif kitty and override == False:
-        sys('kitty --hold -e ./Executables/temp')
-    elif st and override == False:
-        sys("st -e bash -c './Executables/temp /NY; read'")
-    elif xterm and override == False:
-        sys('xterm -hold -e ./Executables/temp')
+    if xfce4terminal:
+        if override == False:
+            sys('xfce4-terminal --hold -e ./Executables/temp')
+    elif konsole:
+        if override == False:
+            sys('konsole --noclose -e ./Executables/temp')
+    elif alacritty:
+        if override == False:
+            sys('alacritty --hold -e ./Executables/temp')
+    elif kitty:
+        if override == False:
+            sys('kitty --hold -e ./Executables/temp')
+    elif st:
+        if override == False:
+            sys("st -e bash -c './Executables/temp /NY; read'")
+    elif xterm:
+        if override == False:
+            sys('xterm -hold -e ./Executables/temp')
+    else:
+        pass
 
 
 if __name__ == '__main__':
