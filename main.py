@@ -115,7 +115,7 @@ def newterminal():
 
 
     
-    if xfce4terminal:
+    if xfce4terminal and override == False:
         if override == False:
             sys('xfce4-terminal --hold -e ./Executables/temp')
     elif konsole:
