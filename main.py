@@ -1,4 +1,4 @@
-=import tkinter as tk
+import tkinter as tk
 from tkinter import ttk
 from os import system as sys
 import os.path
