@@ -82,15 +82,15 @@ def newterminal():
 
     if get_output(pkgmanager + "| grep xfce4-terminal | awk '{print $" + awkline + "}' | head -n 1" ) == "xfce4-terminal":
         xfce4terminal = True
-    elif get_output(pkgmanager + "| grep konsole | awk '{print $" + awkline + "}' | head -n 1" ) == "konsole":
+    if get_output(pkgmanager + "| grep konsole | awk '{print $" + awkline + "}' | head -n 1" ) == "konsole":
         konsole = True
-    elif get_output(pkgmanager + "| grep kitty | awk '{print $" + awkline + "}' | head -n 1" ) == "kitty":
+    if get_output(pkgmanager + "| grep kitty | awk '{print $" + awkline + "}' | head -n 1" ) == "kitty":
         kitty = True
-    elif get_output(pkgmanager + "| grep alacritty | awk '{print $" + awkline + "}' | head -n 1" ) == "alacritty":
+    if get_output(pkgmanager + "| grep alacritty | awk '{print $" + awkline + "}' | head -n 1" ) == "alacritty":
         alacritty = True
-    elif get_output(pkgmanager + "| grep st | awk '{print $" + awkline + "}' | head -n 1" ) == "st":
+    if get_output(pkgmanager + "| grep st | awk '{print $" + awkline + "}' | head -n 1" ) == "st":
         st = True
-    elif get_output(pkgmanager + "| grep xterm | awk '{print $" + awkline + "}' | head -n 1" ) == "xterm":
+    if get_output(pkgmanager + "| grep xterm | awk '{print $" + awkline + "}' | head -n 1" ) == "xterm":
         xterm = True
     
 
@@ -139,4 +139,5 @@ def newterminal():
 
 if __name__ == '__main__':
     main()
+
 
