@@ -1,6 +1,6 @@
 Depends on:
-python3-tk
-terminus-font
+tk (python3-tk for debian-based systems)
+terminus-font (xfonts-terminus for debian-based systems)
 
 
 If you have multiple terminal emulators installed on your os and you want to change the terminal that's gonna be
