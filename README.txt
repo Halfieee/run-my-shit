@@ -2,7 +2,6 @@ Depends on:
 tk (python3-tk for debian-based systems)
 terminus-font (xfonts-terminus for debian-based systems)
 
-
 If you have multiple terminal emulators installed on your os and you want to change the terminal that's gonna be
 used by this script to your liking, edit terminal-override.txt with the package name of your terminal emulator.
 If not, the terminal will be selected automatically.
