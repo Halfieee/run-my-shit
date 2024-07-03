@@ -96,22 +96,24 @@ def newterminal():
 
 
     if get_output('echo "$(<terminal-override.txt )"') == 'xfce4-terminal':
+        override = True
         sys('xfce4-terminal --hold -e ./Executables/temp')
-        override = True
     if get_output('echo "$(<terminal-override.txt )"') == 'konsole':
+        override = True
         sys('konsole --noclose -e ./Executables/temp')
-        override = True
     if get_output('echo "$(<terminal-override.txt )"') == 'alacritty':
+        override = True
         sys('alacritty --hold -e ./Executables/temp')
-        override = True
     if get_output('echo "$(<terminal-override.txt )"') == 'kitty':
-        sys('kitty --hold -e ./Executables/temp')
         override = True
+        sys('kitty --hold -e ./Executables/temp')
     if get_output('echo "$(<terminal-override.txt )"') == 'st':
+        override = True
         sys("st -e bash -c './Executables/temp /NY; read'")
     if get_output('echo "$(<terminal-override.txt )"') == 'xterm':
-        sys('xterm -hold -e ./Executables/temp')
         override = True
+        sys('xterm -hold -e ./Executables/temp')
+        
 
 
     
@@ -137,6 +139,8 @@ def newterminal():
 
 if __name__ == '__main__':
     main()
+
+
 
 
 
