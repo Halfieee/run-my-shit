@@ -41,7 +41,9 @@ def main():
     #idk why, but on debian the entry box goes out of the frame, so i have to resize it
     if debian:
         pathbox.config(width=21)
-    pathbox.place(x=30, y=80)
+        pathbox.place(x=28, y=80)
+    else:
+        pathbox.place(x=30, y=80)
 
     tk.Label(root, text='Path to C file:', font='Helvetica 18', background='#1e1d2d', foreground='white').place(x=55, y=40)
     
@@ -52,7 +54,11 @@ def main():
         
         sys('gcc ' + pathtext.get() + ' -o Executables/temp')
         newterminal()
-    tk.Button(root, text='RUN MY SHIT', font='Terminus 20', background='#1e1d2d', foreground='white', activebackground='#1e1d2d', activeforeground='white', relief='raised', command=buttonpress).place(x=35, y=150)
+    button = tk.Button(root, text='RUN MY SHIT', font='Terminus 20', background='#1e1d2d', foreground='white', activebackground='#1e1d2d', activeforeground='white', relief='raised', command=buttonpress)
+    if debian:
+        button.place(x=30, y=150)
+    else:
+        button.place(x=35, y=150)
 
     root.mainloop()
 
