@@ -115,29 +115,28 @@ def newterminal():
 
 
     
-    if xfce4terminal and override == False:
+    if xfce4terminal:
         if override == False:
             sys('xfce4-terminal --hold -e ./Executables/temp')
-    elif konsole:
+    if konsole:
         if override == False:
             sys('konsole --noclose -e ./Executables/temp')
-    elif alacritty:
+    if alacritty:
         if override == False:
             sys('alacritty --hold -e ./Executables/temp')
-    elif kitty:
+    if kitty:
         if override == False:
             sys('kitty --hold -e ./Executables/temp')
-    elif st:
+    if st:
         if override == False:
             sys("st -e bash -c './Executables/temp /NY; read'")
-    elif xterm:
+    if xterm:
         if override == False:
             sys('xterm -hold -e ./Executables/temp')
-    else:
-        pass
 
 
 if __name__ == '__main__':
     main()
+
 
 
