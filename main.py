@@ -9,6 +9,11 @@ class Background:
         self.bg = tk.Canvas(master=master, width=sizex, height=sizey, bg=color, highlightthickness=1, highlightbackground='white')
         self.bg.place(x=x, y=y)
 
+def get_output(command):
+       result = os.popen(command)
+       output = result.read().strip()
+       return output
+    
 def main():
     #OS check
     debian = False
@@ -52,12 +57,6 @@ def main():
     root.mainloop()
 
 def newterminal():
-    def get_output(command):
-            result = os.popen(command)
-            output = result.read().strip()
-            return output
-
-
     xfce4terminal = False
     konsole = False
     kitty = False
