@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from os import system as sys
 import os.path
-from multiprocessing import Process
+
 
 class Background:
     def __init__(self, master, color, sizex, sizey, x, y):
@@ -15,6 +15,7 @@ def main():
     else:
         sys('mkdir Executables')
     root = tk.Tk()
+    root.title('rms')
     root.resizable(False, False)
     root.geometry('250x230')
 
@@ -49,16 +50,68 @@ def newterminal():
 
     xfce4terminal = False
     konsole = False
+    kitty = False
+    alacritty = False
+    xterm = False
+    override = False
+    st = False
+    pkgmanager = 'pacman -Q '
+    awkline = '1'
+    
+    #distro check
+    if get_output('cat /etc/os-release | tail -n 2 | head -n 1') == 'ID_LIKE=debian':
+        pkgmanager = 'dpkg-query --list '
+        awkline = '2'
+    else:
+        pass
 
-    if get_output("pacman -Q | grep xfce4-terminal | awk '{print $1}'" ) == "xfce4-terminal":
+    if get_output(pkgmanager + "| grep xfce4-terminal | awk '{print $" + awkline + "}'" ) == "xfce4-terminal":
         xfce4terminal = True
-    elif get_output("pacman -Q | grep konsole | awk '{print $1}'") != "":
+    elif get_output(pkgmanager + "| grep konsole | awk '{print $" + awkline + "}'" ) != "konsole":
         konsole = True
+    elif get_output(pkgmanager + "| grep kitty | awk '{print $" + awkline + "}'" ) != "kitty":
+        kitty = True
+    elif get_output(pkgmanager + "| grep alacritty | awk '{print $" + awkline + "}'" ) != "alacritty":
+        alacritty = True
+    elif get_output(pkgmanager + "| grep st | awk '{print $" + awkline + "}'" ) != "st":
+        st = True
+    elif get_output(pkgmanager + "| grep xterm | awk '{print $" + awkline + "}'" ) != "xterm":
+        xterm = True
+    
 
-    if xfce4terminal == True:
+
+    if get_output('echo "$(<terminal-override.txt )"') == 'xfce4-terminal':
         sys('xfce4-terminal --hold -e ./Executables/temp')
-    elif konsole == True:
+        override = True
+    elif get_output('echo "$(<terminal-override.txt )"') == 'konsole':
         sys('konsole --noclose -e ./Executables/temp')
+        override = True
+    elif get_output('echo "$(<terminal-override.txt )"') == 'alacritty':
+        sys('alacritty --hold -e ./Executables/temp')
+        override = True
+    elif get_output('echo "$(<terminal-override.txt )"') == 'kitty':
+        sys('kitty --hold -e ./Executables/temp')
+        override = True
+    elif get_output('echo "$(<terminal-override.txt )"') == 'st':
+        sys("st -e bash -c './Executables/temp /NY; read'")
+    elif get_output('echo "$(<terminal-override.txt )"') == 'xterm':
+        sys('xterm -hold -e ./Executables/temp')
+        override = True
+
+
+    
+    if xfce4terminal and override == False:
+        sys('xfce4-terminal --hold -e ./Executables/temp')
+    elif konsole and override == False:
+        sys('konsole --noclose -e ./Executables/temp')
+    elif alacritty and override == False:
+        sys('alacritty --hold -e ./Executables/temp')
+    elif kitty and override == False:
+        sys('kitty --hold -e ./Executables/temp')
+    elif st and override == False:
+        sys("st -e bash -c './Executables/temp /NY; read'")
+    elif xterm and override == False:
+        sys('xterm -hold -e ./Executables/temp')
 
 
 if __name__ == '__main__':
