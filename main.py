@@ -14,12 +14,12 @@ def get_output(command):
        output = result.read().strip()
        return output
     
+#OS check
+debian = False
+if get_output('cat /etc/os-release | tail -n 2 | head -n 1') == 'ID_LIKE=debian':
+    debian = True
+    
 def main():
-    #OS check
-    debian = False
-    if get_output('cat /etc/os-release | tail -n 2 | head -n 1') == 'ID_LIKE=debian':
-        debian = True
-
     #checks if Executables dir is present
     if os.path.isdir('Executables') == True:
         pass
